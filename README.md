@@ -32,7 +32,7 @@ Cùng user, situation (PivotTable trên file thật hiện Count thay vì Sum, n
 Link prototype: [prototype-link.md](prototype-link.md)
 
 ## 4. Đóng góp của tôi trong nhóm
-- Thiết kế và build **Option B — Đối thoại đồng chẩn đoán** (prototype: `prototype/index.html`).
+- Thiết kế và build **Option B — Đối thoại đồng chẩn đoán** (prototype: https://trungdam1305.github.io/Track1_Day19_2A202602525_DamQuangTrung/prototype/ · source ở nhánh `gh-pages`).
 - TODO (tự viết): phần shared context/content, Human–AI decisions tôi góp ý, phiên test tôi facilitate, phần tổng hợp.
 - Day 17: thực hiện phiên PN2. Phiên này bị nhóm loại vì sai actor. Bài học từ đó tôi đưa vào Conversation Guide v2: hỏi đủ hai câu sàng lọc, xin phép ghi âm trong bản ghi, thêm probe cho thuật ngữ lạ.
 
