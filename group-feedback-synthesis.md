@@ -46,7 +46,7 @@ Mỗi ô ghi **hành vi** (T1/T2/T3), không ghi "thích / không thích".
 
 **Option được chọn và trade-off (lời tester):**
 - T1: chọn **B** — vì cung cấp được thông tin đầu vào mà **không cấp quyền xem sheet**; đánh đổi là phải tự trả lời câu hỏi và tự kiểm tra đề xuất. *"Mình muốn tự kiểm tra trước khi sửa."* (Trang diễn giải: lựa chọn phản ánh trade-off về quyền dữ liệu, không phải "B tốt nhất nói chung".)
-- T2: TODO — phiếu chưa ghi phần hỏi sau khi xong cả ba (chọn option nào khi gấp, đánh đổi gì)
+- T2: khi gấp trước 17:00 chọn **C** — cần kết quả ngay; đánh đổi là tự khoanh vùng che dữ liệu nhạy cảm và chưa hiểu sâu lỗi (*"xong việc tối về ngẫm sau"*). Hiểu rõ nhất vì sao sai ở **B**. *"Lúc đang cháy deadline thì C là cứu tinh, nhưng lúc muốn học nghề nghiêm túc thì B mới giúp mình không bị dốt đi."*
 - T3: TODO
 
 ## 3. Pattern và khác biệt
