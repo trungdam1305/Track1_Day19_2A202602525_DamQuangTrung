@@ -3,7 +3,7 @@
 | Option | Người build | Link |
 |---|---|---|
 | A — Bản đồ tự kiểm tra | Nguyễn Thị Bảo Trang | TODO |
-| B — Đối thoại đồng chẩn đoán | Đàm Quang Trung | [prototype/index.html](prototype/index.html) · GitHub Pages: TODO |
+| B — Đối thoại đồng chẩn đoán | Đàm Quang Trung | https://trungdam1305.github.io/Track1_Day19_2A202602525_DamQuangTrung/prototype/ (source: [prototype/index.html](prototype/index.html)) |
 | C — AI kiểm tra artefact, user duyệt | Đặng Văn Thái Anh | TODO |
 
 **Task chung cho tester (đọc nguyên văn, không giải thích thêm):**
