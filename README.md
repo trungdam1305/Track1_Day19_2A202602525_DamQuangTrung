@@ -1,4 +1,4 @@
-# Track1_Day19_2A202602525_DamQuangTrung
+# Track1_Day18_2A202602525_DamQuangTrung
 
 ## 1. Thông tin cá nhân và nhóm
 | Mục | Nội dung |
@@ -37,7 +37,7 @@ Link prototype: [prototype-link.md](prototype-link.md)
 - Day 17: thực hiện phiên PN2. Phiên này bị nhóm loại vì sai actor. Bài học từ đó tôi đưa vào Conversation Guide v2: hỏi đủ hai câu sàng lọc, xin phép ghi âm trong bản ghi, thêm probe cho thuật ngữ lạ.
 
 ## 5. Prototype Feedback
-- Observation từ phiên tôi facilitate: [prototype-feedback-note.md](prototype-feedback-note.md) — TODO sau khi test
+- Observation từ phiên tôi facilitate ([prototype-feedback-note.md](prototype-feedback-note.md), tester Bùi Đức Thành, 05/10/2026, thứ tự B → C → A): cả ba option tester đều tìm ra cách sửa và quay lại bài. Ở B, tester **không chia sẻ** dữ liệu (*"File công ty có số tiền thật nên hơi ngại tải lên"*) nhưng vẫn nhận ra dấu hiệu nhờ "Làm thử trên file mẫu"; cần 1 câu cứu hộ khi đọc lâu màn giả thuyết. Ở C, tester chia sẻ nhưng tự khoanh vùng nhỏ, tránh cột tên khách, và mở bằng chứng trước khi duyệt. Ở A, tester đứng yên >30 giây ở màn chính (*"Nhiều nhánh quá…"*).
 - Tổng hợp ba feedback: [group-feedback-synthesis.md](group-feedback-synthesis.md) — TODO sau khi test
 - Next Change: TODO (mẫu: "đã thử ba cách giải; tester đã làm…; vì vậy lần sau sẽ…")
 - Still Unproven: TODO
