@@ -16,7 +16,7 @@
 **Observation Day 17:**
 - PN1: kẹt ở Hybrid Retrieval, dò 6 nguồn trong khoảng một giờ, thoát kẹt nhờ ví dụ thực tế. *"Mình chỉ biết là mình không hiểu hybrid retrieval…"*
 - PN3 (chưa đối chiếu file nguồn): PivotTable hiện Count thay vì Sum. Người học tua video và làm lại khoảng 10 phút. Người học đã biết chuyện số lưu dạng text nhưng không liên hệ với triệu chứng (03:27).
-- **PN2 (phiên tôi hỏi) bị loại khỏi phạm vi:** người được hỏi học workshop live, không đúng actor. Không có đoạn xin phép trong bản ghi. Quote lấy từ auto-transcript. Tôi không dùng PN2 làm căn cứ.
+- **PN2 (phiên tôi hỏi):** phiên cũ P-02550 bị loại vì sai actor (học workshop live) và không có consent trong bản ghi. Tôi đã phỏng vấn lại chính P-02550, lần này hỏi về tự học: người này nêu khó khăn ở chọn tài liệu (*"không biết tài liệu nào chính xác và phù hợp"*) nhưng không kể được lần cụ thể nào → evidence yếu, không dùng làm căn cứ.
 
 **Chưa biết:** học viên có sẵn sàng chia sẻ file công việc cho AI không · Lớp 1 (không biết mình thiếu gì) hay Lớp 2 (biết nhưng không nối được) phổ biến hơn · học viên tin AI tới đâu. Hai note khác chủ đề nên chưa nói được gì về tần suất.
 

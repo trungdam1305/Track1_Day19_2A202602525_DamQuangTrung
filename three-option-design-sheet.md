@@ -11,26 +11,30 @@
 | Note | Trạng thái |
 |---|---|
 | PN1 (Thái Anh hỏi) | Dùng làm evidence — có note + audio |
-| PN2 (Trung hỏi, P-02550) | **Loại khỏi phạm vi** — xem lý do bên dưới |
+| PN2 bổ sung (Trung hỏi) | ⏳ Có transcript, thiếu metadata 2A2026, không có timestamp → **evidence yếu**, ghi nhận nhưng không dùng làm căn cứ |
 | PN3 (Trang hỏi, P03) | Tạm dùng, **chưa đối chiếu được với file nguồn** |
 
-**Vì sao PN2 bị loại:** người được hỏi chỉ học workshop live trên Zoom, không tự học theo nhịp cá nhân (sai actor, do bỏ qua câu sàng lọc thứ hai). Câu chuyện chính là bị làm phiền và miss thông tin, không phải không hiểu nội dung. Không có đoạn xin phép ghi âm trong bản ghi. Quote lấy từ auto-transcript, chưa đối chiếu audio. Bài học từ PN2 đã chuyển thành các sửa đổi Conversation Guide v2 (Day 17).
+**Vì sao PN2 cũ bị loại:** người được hỏi chỉ học workshop live trên Zoom, không tự học theo nhịp cá nhân (sai actor, do bỏ qua câu sàng lọc thứ hai). Câu chuyện chính là bị làm phiền và miss thông tin, không phải không hiểu nội dung. Không có đoạn xin phép ghi âm trong bản ghi. Bài học đã chuyển thành các sửa đổi Conversation Guide v2 (Day 17).
+
+**Vì sao PN2 bổ sung chỉ là evidence yếu:** người được hỏi có tự học online nhưng **không kể được lần cụ thể nào** trong 7 ngày; không có workaround hay hậu quả cụ thể. Lời mở đầu nêu "website hỗ trợ tự học" nên phần lớn buổi là feature request và câu hỏi ý kiến. Bản ghi Day 17: `interview/notes-bo-sung.md`.
 
 ### Evidence Snapshot
 | Note | User đã thực sự làm / nói gì | Nhóm đang diễn giải |
 |---|---|---|
 | PN1 | Học RAG, kẹt ở đoạn combine hai result lists. Workaround: video → slide → Google → documentation → YouTube → ChatGPT → tìm ví dụ thực tế. *"Khoảng một tiếng."* *"Mình chỉ biết là mình không hiểu hybrid retrieval. Sau đó mình mới nhận ra là mình chưa hiểu rõ điểm mạnh và điểm yếu của BM25 với semantic search."* | Không biết mình thiếu gì (Lớp 1); barrier có thể là chi phí tìm đúng cách giải thích |
+| PN2 bổ sung ⏳ | *"Mình thường tìm tài liệu trên Google, YouTube và một số website học trực tuyến."* *"Khó khăn lớn nhất là có quá nhiều tài liệu nên mình không biết tài liệu nào chính xác và phù hợp. Một số bài giảng cũng khá dài, khó tìm đúng nội dung mình cần."* *"…đôi lúc mình dễ mất tập trung hoặc bỏ dở kế hoạch học."* **Không có episode cụ thể.** Phần còn lại là feature request (gợi ý từng bước, lộ trình, theo dõi tiến độ…) | Khó khăn ở **chọn nguồn / tìm đúng đoạn**, xảy ra trước khi vào bài; cùng hướng "chi phí tìm nguồn" của PN1 nhưng **chỉ là nhận định chung**. Không xếp được vào Lớp 1 hay Lớp 2 |
 | PN3 ⏳ | PivotTable trên file thật hiện Count thay vì Sum, nút Sum mờ. Cộng thử dữ liệu gốc (00:51) → tua video, tạo lại PivotTable ~10′ (01:06–01:45) → YouTube, chỉ cách đổi phép tính (01:45) → gửi screenshot nhóm chat, đồng nghiệp nhận ra cột bị hiểu là text (02:23). Bỏ phần video tiếp theo, không quay lại (03:01). Đã biết chuyện số lưu dạng text nhưng không liên hệ (03:27) | Biết kiến thức nhưng không nối được với triệu chứng (Lớp 2) |
 
-**Điểm chung:** cả hai đều kẹt dù có (hoặc gần có) kiến thức; nguồn ngoài không khớp tình huống thật; kết cục là gián đoạn luồng học.
-**Mâu thuẫn:** PN1 thoát kẹt nhờ ví dụ, không nhờ ôn nền; PN3 đã biết kiến thức → Pain A Day 17 không còn note nào hỗ trợ trực tiếp. Q12 của PN1 bị dẫn dắt, không dùng.
-**Vẫn là suy đoán:** thiếu nền là bottleneck · pattern chung · Pain C · ~1 giờ là điển hình · học viên sẵn sàng chia sẻ file cho AI.
+**Điểm chung (PN1, PN3):** cả hai đều kẹt dù có (hoặc gần có) kiến thức; nguồn ngoài không khớp tình huống thật; kết cục là gián đoạn luồng học. PN2 bổ sung chỉ cùng hướng ở bước "tìm nguồn ngoài", không có episode để so.
+**Mâu thuẫn / bất ngờ:** PN1 thoát kẹt nhờ ví dụ, không nhờ ôn nền; PN3 đã biết kiến thức → Pain A Day 17 không còn note nào hỗ trợ trực tiếp. Q12 của PN1 bị dẫn dắt, không dùng. PN2 nêu khó khăn ở **chọn tài liệu** (trước khi vào bài), khác vị trí với PN1/PN3 (kẹt trong bài) — ghi nhận để theo dõi, không mở rộng hypothesis.
+**Vẫn là suy đoán:** thiếu nền là bottleneck · pattern chung · Pain C · ~1 giờ là điển hình · học viên sẵn sàng chia sẻ file cho AI · "người học cần hướng dẫn từng bước" (PN2, feature request) · "người học bị quá tải tài liệu" (PN2, một câu nhận định).
 
 ### Hypothesis Problem
 > **Khi** học viên tự học trực tuyến theo nhịp cá nhân để áp dụng ngay vào việc thật, và kết quả trên dữ liệu thật khác với hướng dẫn, **học viên** gặp khó khăn trong việc **xác định điểm vướng và dùng đúng điều mình đã biết**, **vì** không biết mình đã biết gì / đang thiếu gì liên quan tới đúng triệu chứng này, và nguồn ngoài viết cho người chưa từng gặp tình huống đó trên dữ liệu thật của họ, **dẫn đến** lặp lại thao tác, dò nhiều nguồn không khớp, mất thời gian, gián đoạn luồng học; đôi khi bỏ hẳn phần học tiếp theo.
 
 **Chưa biết:** (1) học viên có sẵn sàng chia sẻ artefact công việc cho AI không; (2) Lớp 1 hay Lớp 2 xuất hiện nhiều hơn; (3) học viên tin AI tới mức nào.
-**Gate 1:** PASS có điều kiện — còn chờ file nguồn PN3.
+**PN2 bổ sung không làm thay đổi hypothesis:** không thành phần nào (situation, barrier, consequence) được hỗ trợ hay bác bỏ bằng hành vi cụ thể.
+**Gate 1:** PASS có điều kiện — đã thực hiện đủ 3/3 note nhưng chỉ PN1, PN3 có episode; còn chờ file nguồn PN3 và metadata PN2.
 
 ---
 

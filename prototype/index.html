@@ -132,6 +132,10 @@
   </div>
 
   <div class="entry"><button class="primary" id="btnStuck">Tôi đang bị kẹt ở bước này</button></div>
+  <div class="card hidden" id="resumeBox" style="margin-top:12px">
+    <b>Bạn đang làm dở phần trợ giúp.</b> Câu trả lời của bạn vẫn còn.
+    <div class="row" style="margin-top:8px"><button class="primary" id="btnResume">Tiếp tục chỗ cũ</button><button id="btnFresh">Bắt đầu lại từ đầu</button></div>
+  </div>
 </section>
 
 <!-- ============ OPTION B — CRITICAL INTERACTION ============ -->
@@ -187,6 +191,9 @@
   <div class="card">
     <h2>Phép kiểm tra — bạn tự làm, file không bị thay đổi</h2>
     <ol class="steps" id="chkSteps"></ol>
+    <div class="row"><button class="primary" id="btnRunSim">▶ Làm thử trên file mẫu</button>
+      <span class="note">Trong buổi thử này bạn không cần mở Excel — bấm để xem kết quả trên file.</span></div>
+    <div id="chkSim" class="hidden" style="margin-top:12px; max-width:520px"></div>
     <h3 style="margin-top:14px">Bạn thấy kết quả nào?</h3>
     <div class="row" id="chkAnswers"></div>
     <div id="chkResult"></div>
@@ -207,17 +214,18 @@
 const QUESTIONS = [
   { id: "q1", text: "Bạn mong ô Values hiện ra con số gì?",
     opts: ["Tổng tiền doanh thu từng khu vực", "Số đơn hàng từng khu vực", "Không biết"] },
-  { id: "q2", text: "Bạn đã mở Value Field Settings chưa? Mục Sum ở đó trông thế nào?",
+  { id: "q2", text: "Mình không nhìn thấy màn hình của bạn, nên cần bạn mô tả: khi mở Value Field Settings, mục Sum trông thế nào?",
     opts: ["Sum bị mờ, không bấm được", "Bấm được Sum nhưng kết quả vẫn lạ", "Chưa mở", "Không biết"] },
   { id: "q3", text: "Bạn có muốn cho mình xem vài dòng của cột Doanh thu không? Mình sẽ che tên khách hàng; bạn xoá được bất cứ lúc nào.",
     opts: ["Chia sẻ 5 dòng (che tên khách)", "Không chia sẻ"] },
 ];
 const SKIP = "Bỏ qua câu này";
 
-let answers = {}, rejected = new Set(), rounds = 0, current = null, editing = false;
+let answers = {}, rejected = new Set(), rounds = 0, current = null, editing = false, extraShown = false, lastScreen = null;
 
 const $ = id => document.getElementById(id);
-function show(id) { ["scrContext","scrB","scrHyp","scrCheck","scrDone"].forEach(s => $(s).classList.toggle("hidden", s !== id)); window.scrollTo(0,0); }
+function show(id) { ["scrContext","scrB","scrHyp","scrCheck","scrDone"].forEach(s => $(s).classList.toggle("hidden", s !== id)); if (id !== "scrContext") lastScreen = id; $("resumeBox").classList.add("hidden"); window.scrollTo(0,0); }
+function inProgress() { return Object.keys(answers).length > 0 && lastScreen && lastScreen !== "scrDone"; }
 function shared() { return answers.q3 === QUESTIONS[2].opts[0]; }
 
 // ---------- Câu hỏi thích ứng ----------
@@ -260,7 +268,7 @@ function sharePreview() {
     <tr><td><span class="redact">HKD Ngọc Lan</span></td><td class="txt flag"> 4.200.000</td></tr>
     <tr><td><span class="redact">Cty Sao Việt</span></td><td class="txt flag"> 15.000.000</td></tr>
     <tr><td><span class="redact">Cty Phương</span></td><td class="txt flag"> 6.300.000</td></tr></table>
-    <button class="link">Xoá ảnh đã chia sẻ khỏi phiên</button>`;
+    <button class="link">Xoá dữ liệu đã chia sẻ khỏi phiên</button>`;
   d.querySelector("button").onclick = () => { answers.q3 = QUESTIONS[2].opts[1]; renderQuestions(); };
   return d;
 }
@@ -282,6 +290,12 @@ function hypotheses() {
         steps: ["Ở một cột trống bên phải bảng dữ liệu, gõ <code>=ISNUMBER(E2)</code> (E là cột Doanh thu) rồi Enter.",
                 "Kéo công thức xuống 5–10 dòng.",
                 "Xoá cột tạm đó sau khi xem xong — dữ liệu gốc không bị đổi."],
+        sim: `<div class="xlhead">baocao_T9.xlsx — Sheet1</div><table class="xl"><tr><th>Doanh thu (E)</th><th>Cột tạm (F)</th></tr>
+          <tr><td class="txt flag"> 12.500.000</td><td>=ISNUMBER(E2) → <b>FALSE</b></td></tr>
+          <tr><td class="txt flag"> 8.750.000</td><td><b>FALSE</b></td></tr>
+          <tr><td class="txt flag"> 4.200.000</td><td><b>FALSE</b></td></tr>
+          <tr><td class="txt flag"> 15.000.000</td><td><b>FALSE</b></td></tr>
+          <tr><td class="txt flag"> 6.300.000</td><td><b>FALSE</b></td></tr></table>`,
         answers: [["Ra FALSE", "confirm"], ["Ra TRUE", "reject"], ["Không chắc / không làm được", "unsure"]] } },
     { id: "range", title: "PivotTable lấy nhầm cột hoặc nhầm vùng dữ liệu",
       level: "thap",
@@ -292,6 +306,7 @@ function hypotheses() {
         steps: ["Bấm vào PivotTable → tab PivotTable Analyze → Change Data Source.",
                 "Xem vùng được chọn có phủ hết 365 dòng và có cột Doanh thu không.",
                 "Bấm Cancel — không đổi gì."],
+        sim: `<div class="vfs" style="margin-top:0"><b>Change PivotTable Data Source</b><br>Table/Range: <code>Sheet1!$A$1:$E$366</code><br><span class="note">Vùng gồm 5 cột: Mã đơn, Ngày, Khu vực, Khách hàng, Doanh thu · 1 dòng tiêu đề + 365 dòng dữ liệu</span><div style="margin-top:6px">[ OK ] &nbsp; [ Cancel ]</div></div>`,
         answers: [["Vùng đúng, đủ cột", "reject"], ["Vùng thiếu / sai cột", "confirm"], ["Không chắc", "unsure"]] } },
     { id: "blank", title: "Cột Doanh thu có ô trống",
       level: "thap",
@@ -299,9 +314,20 @@ function hypotheses() {
       con: [ sumDim && "Ô trống thường không làm Sum bị mờ — bạn vẫn đổi sang Sum được." ].filter(Boolean),
       gap: [ "Chưa biết cột có ô trống hay không." ],
       check: { title: "Cột Doanh thu có ô trống không?",
-        steps: ["Chọn cả cột Doanh thu.", "Nhìn thanh trạng thái dưới cùng: so <b>Count</b> với số dòng dữ liệu (365).", "Không cần sửa gì."],
+        steps: ["Chọn vùng <code>E2:E366</code> (toàn bộ dữ liệu cột Doanh thu, không gồm tiêu đề).", "Nhìn thanh trạng thái dưới cùng: so <b>Count</b> với số dòng dữ liệu (365).", "Không cần sửa gì."],
+        sim: `<div class="vfs" style="margin-top:0; display:flex; gap:24px; justify-content:flex-end; font-size:12px">Ready &nbsp;&nbsp; <span>Count: <b>365</b></span></div><p class="note">Thanh trạng thái Excel khi chọn E2:E366 (chỉ hiện Count, không hiện Sum)</p>`,
         answers: [["Count = 365 (không trống)", "reject"], ["Count nhỏ hơn 365", "confirm"], ["Không chắc", "unsure"]] } },
   ];
+  if (extraShown) H.push(
+    { id: "refresh", title: "PivotTable chưa cập nhật theo dữ liệu mới",
+      level: "thap",
+      pro: [ "Nếu dữ liệu được sửa sau khi tạo PivotTable, PivotTable vẫn giữ kết quả cũ cho tới khi Refresh." ],
+      con: [ "Bạn đã tạo lại PivotTable mới mà vẫn ra Count." ],
+      gap: [],
+      check: { title: "Refresh PivotTable có đổi kết quả không?",
+        steps: ["Bấm chuột phải vào PivotTable → Refresh.", "Xem ô Values có đổi sang Sum không.", "Refresh không làm thay đổi dữ liệu gốc."],
+        sim: `<table class="xl"><tr><th>Khu vực</th><th>Count of Doanh thu</th></tr><tr><td>Bắc</td><td class="num">128</td></tr><tr><td>Trung</td><td class="num">96</td></tr><tr><td>Nam</td><td class="num">141</td></tr></table><p class="note">Sau khi Refresh — kết quả không đổi</p>`,
+        answers: [["Vẫn hiện Count", "reject"], ["Đổi sang Sum", "confirm"], ["Không chắc", "unsure"]] } });
   const order = { cao: 0, tb: 1, thap: 2 };
   return H.sort((a, b) => order[a.level] - order[b.level]);
 }
@@ -311,7 +337,7 @@ function renderHyp() {
   const H = hypotheses(), alive = H.filter(h => !rejected.has(h.id));
   $("hypIntro").innerHTML = rejected.size === 0
     ? "Từ câu trả lời của bạn, đây là các nguyên nhân <b>có thể</b>, xếp theo mức độ phù hợp với dấu hiệu. Mình <b>chưa kết luận</b> cái nào — bạn chọn một cái để tự kiểm tra."
-    : rounds >= 2 || alive.length === 0
+    : rejected.size >= 2 || alive.length === 0
       ? "<b>Mình không chắc.</b> Các giả thuyết mình có chưa khớp với kết quả bạn kiểm tra. Bạn có thể gửi tóm tắt bên dưới cho mentor/đồng nghiệp, hoặc sửa câu trả lời."
       : "Bạn đã loại một giả thuyết. Mình đã sắp xếp lại các cái còn lại.";
 
@@ -335,7 +361,7 @@ function renderHyp() {
       x.onclick = () => { rejected.add(h.id); rounds++; renderHyp(); }; r.appendChild(x); }
     d.appendChild(r); list.appendChild(d);
   }
-  if (rounds >= 2 || alive.length === 0) {
+  if (rejected.size >= 2 || alive.length === 0) {
     const m = document.createElement("div"); m.className = "result warn";
     m.innerHTML = `<b>Tóm tắt để hỏi mentor / đồng nghiệp</b> (bạn sao chép và gửi):<br>
       <span class="note">Bước 4 PivotTable hiện Count thay vì Sum. ${answers.q2 ? "Sum: " + answers.q2 + "." : ""} Đã loại: ${H.filter(h => rejected.has(h.id)).map(h => h.title).join("; ") || "—"}. Đã thử: tua video, tạo lại PivotTable.</span>`;
@@ -348,6 +374,7 @@ function openCheck(h) {
   $("chkTitle").textContent = h.check.title;
   $("chkSteps").innerHTML = h.check.steps.map(s => `<li>${s}</li>`).join("");
   $("chkResult").innerHTML = "";
+  $("chkSim").innerHTML = h.check.sim || ""; $("chkSim").classList.add("hidden");
   const box = $("chkAnswers"); box.innerHTML = "";
   h.check.answers.forEach(([label, kind]) => {
     const b = document.createElement("button"); b.textContent = label;
@@ -386,19 +413,34 @@ function done(withFix) {
       <li>Bấm vào PivotTable → <b>Refresh</b> → Value Field Settings → chọn <b>Sum</b>.</li>
       <li>Kiểm lại: cộng tay 2–3 dòng, so với PivotTable.</li></ol>
       <p class="note">Muốn hoàn tác: Ctrl+Z, hoặc mở lại bản sao.</p>` :
-      `<h2>Đã ghi lại điểm bạn đang dừng</h2><p>Bạn có thể quay lại trợ giúp này từ nút "Tôi đang bị kẹt ở bước này".</p>`)
+      `<h2>Để sau cũng được</h2><p>Bạn có thể mở lại trợ giúp này bất cứ lúc nào bằng nút "Tôi đang bị kẹt ở bước này". Bản thử này không lưu câu trả lời của bạn sau khi đóng trang.</p>`)
     + `<div class="row" style="margin-top:14px"><button class="primary" id="backLesson">Quay lại bài — tiếp tục Bước 5</button></div>`;
   $("backLesson").onclick = resetAll;
   show("scrDone");
 }
 
-function resetAll() { answers = {}; rejected = new Set(); rounds = 0; current = null; editing = false; show("scrContext"); }
+function clearState() { answers = {}; rejected = new Set(); rounds = 0; current = null; editing = false; extraShown = false; lastScreen = null; }
+function resetAll() { clearState(); show("scrContext"); }
 
-$("btnStuck").onclick = () => { renderQuestions(); show("scrB"); };
-$("btnExit").onclick = resetAll;
-$("btnRestartB").onclick = () => { answers = {}; rejected = new Set(); rounds = 0; editing = false; renderQuestions(); };
+$("btnStuck").onclick = () => {
+  if (inProgress()) { $("resumeBox").classList.remove("hidden"); return; }
+  renderQuestions(); show("scrB");
+};
+$("btnResume").onclick = () => {
+  if (lastScreen === "scrCheck" && current) show("scrCheck");
+  else if (lastScreen === "scrHyp" || lastScreen === "scrCheck") { renderHyp(); show("scrHyp"); }
+  else { renderQuestions(); show("scrB"); }
+};
+$("btnFresh").onclick = () => { clearState(); renderQuestions(); show("scrB"); };
+$("btnExit").onclick = () => { if (lastScreen === "scrDone") clearState(); const keep = lastScreen; show("scrContext"); lastScreen = keep; };
+$("btnRestartB").onclick = () => { clearState(); renderQuestions(); show("scrB"); };
 $("btnEditAns").onclick = () => { editing = false; renderQuestions(); show("scrB"); };
-$("btnOther").onclick = () => { const top = hypotheses().find(h => !rejected.has(h.id)); if (top) { rejected.add(top.id); rounds++; } renderHyp(); };
+$("btnOther").onclick = () => {
+  if (!extraShown) { extraShown = true; renderHyp(); flash("Mình đã thêm một giả thuyết ở cuối danh sách. Các giả thuyết cũ giữ nguyên."); }
+  else flash("Mình không còn giả thuyết nào khác. Bạn có thể sửa câu trả lời, hoặc dùng tóm tắt để hỏi mentor / đồng nghiệp.");
+};
+function flash(msg) { const m = document.createElement("div"); m.className = "result warn"; m.textContent = msg; $("hypList").appendChild(m); if (m.scrollIntoView) m.scrollIntoView({ block: "nearest" }); }
+$("btnRunSim").onclick = () => $("chkSim").classList.remove("hidden");
 $("btnBackHyp").onclick = () => { renderHyp(); show("scrHyp"); };
 </script>
 </body>
