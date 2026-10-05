@@ -10,7 +10,7 @@
 | Ngày / thời lượng | 05/10/2026 · 14:20–14:50 (~30 phút) |
 | Facilitator | Đàm Quang Trung |
 | Thứ tự option | B (14:20–14:31) → C (14:32–14:41) → A (14:42–14:50) |
-| Prototype | B: https://trungdam1305.github.io/Track1_Day18_2A202602525_DamQuangTrung/prototype/ · A, C: bản của Trang, Thái Anh |
+| Prototype | B: https://trungdam1305.github.io/Track1_Day19_2A202602525_DamQuangTrung/prototype/ · A, C: bản của Trang, Thái Anh |
 | Đồng ý tham gia | Có · ghi âm: TODO |
 | Relevant context | TODO — phiếu chưa ghi câu trả lời cho câu hỏi context. Trong lúc test tester nói *"đúng y hệt lỗi của mình"* và nhắc tới *"file công ty"* → có vẻ có context, cần xác nhận |
 
